@@ -22,28 +22,24 @@ void loop() {
       delay(500);
       digitalWrite(13, 0);
       delay(13000);
-      Serial.begin(9600);
-      delay(200);
-      Serial.write(digitalRead(7));
-      Serial.end();
     } else {
       String status = "";
-      if (digitalRead(7) == HIGH){
+      if (digitalRead(7) == LOW){
         status = "1";
       } else {
         status = "0";
       }
-      Serial.print(status);
+      Serial.println(status);
       Serial.end();
     }
   } else {
     String status = "";
-    if (digitalRead(7) == HIGH){
-      status = "1";
-    } else {
+    if (digitalRead(7) == LOW){
       status = "0";
+    } else {
+      status = "1";
     }
-    Serial.print(status);
+    Serial.println(status);
     Serial.end();
   }
 }
