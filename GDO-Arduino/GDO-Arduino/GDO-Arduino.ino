@@ -21,9 +21,20 @@ void loop() {
       digitalWrite(13, 1);
       delay(500);
       digitalWrite(13, 0);
-      delay(500);
+      delay(13000);
+      Serial.begin(9600);
+      delay(200);
+      Serial.write(digitalRead(7));
+      Serial.end();
+    } else {
+      String status = "";
+      if (digitalRead(7) == HIGH){
+        status = "1";
+      } else {
+        status = "0";
+      }
+      Serial.print(status);
+      Serial.end();
     }
   }
-  Serial.begin(9600);
-  Serial.write(digitalRead(7));
 }
