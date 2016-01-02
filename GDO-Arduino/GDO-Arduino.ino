@@ -36,5 +36,14 @@ void loop() {
       Serial.print(status);
       Serial.end();
     }
+  } else {
+    String status = "";
+    if (digitalRead(7) == HIGH){
+      status = "1";
+    } else {
+      status = "0";
+    }
+    Serial.print(status);
+    Serial.end();
   }
 }

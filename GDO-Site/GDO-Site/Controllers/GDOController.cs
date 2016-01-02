@@ -41,9 +41,9 @@ namespace GDO_Site.Controllers
             return HttpStatusCode.OK;
         }
 
-        [HttpPost]
-        [Route("PostDoorStatus")]
-        public HttpStatusCode PostDoorStatus(JObject status)
+        [HttpGet]
+        [Route("SendDoorStatus/{status}")]
+        public HttpStatusCode SendDoorStatus(string status)
         {
             var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
             var filepath = Directory.GetFiles(directory, "status.txt");
@@ -54,7 +54,7 @@ namespace GDO_Site.Controllers
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@path, true))
             {
-                file.WriteLine(status["Status"]);
+                file.WriteLine(status);
             }
 
             return HttpStatusCode.OK;
