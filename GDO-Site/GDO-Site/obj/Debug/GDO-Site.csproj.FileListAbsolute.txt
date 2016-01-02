@@ -74,3 +74,4 @@ C:\Users\Varjitt\Documents\GitHub\Arduino-Garage-Door-Opener\GDO-Site\GDO-Site\b
 C:\Users\Varjitt\Documents\GitHub\Arduino-Garage-Door-Opener\GDO-Site\GDO-Site\bin\System.Web.Http.Owin.xml
 C:\Users\Varjitt\Documents\GitHub\Arduino-Garage-Door-Opener\GDO-Site\GDO-Site\obj\Debug\GDO-Site.dll
 C:\Users\Varjitt\Documents\GitHub\Arduino-Garage-Door-Opener\GDO-Site\GDO-Site\obj\Debug\GDO-Site.pdb
+C:\Users\Varjitt\Documents\GitHub\Arduino-Garage-Door-Opener\GDO-Site\GDO-Site\obj\Debug\GDO-Site.csprojResolveAssemblyReference.cache

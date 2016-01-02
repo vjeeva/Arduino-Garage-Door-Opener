@@ -14,15 +14,13 @@ namespace GDO_Site.Controllers
     {
         [HttpGet]
         [Route("ToggleDoor")]
-        public JObject SendCommand()
+        public HttpStatusCode ToggleDoor()
         {
             string command;
             var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
             var filepath = Directory.GetFiles(directory, "commands.txt");
             var path = Path.Combine(directory, filepath[0]);
             string text = System.IO.File.ReadAllText(@path).Trim();
-
-            JObject response = new JObject();
 
             if (text.Trim() == "0")
             {
@@ -39,9 +37,40 @@ namespace GDO_Site.Controllers
             {
                 file.WriteLine(command);
             }
+            
+            return HttpStatusCode.OK;
+        }
 
+        [HttpPost]
+        [Route("PostDoorStatus")]
+        public HttpStatusCode PostDoorStatus(JObject status)
+        {
+            var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
+            var filepath = Directory.GetFiles(directory, "status.txt");
+            var path = Path.Combine(directory, filepath[0]);
+            
+            File.WriteAllText(@path, String.Empty);
 
-            response["Message"] = "OK";
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@path, true))
+            {
+                file.WriteLine(status["Status"]);
+            }
+
+            return HttpStatusCode.OK;
+        }
+
+        [HttpGet]
+        [Route("GetDoorStatus")]
+        public JObject GetDoorStatus()
+        {
+            var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
+            var filepath = Directory.GetFiles(directory, "status.txt");
+            var path = Path.Combine(directory, filepath[0]);
+            string text = System.IO.File.ReadAllText(@path).Trim();
+
+            JObject response = new JObject();
+            response["Status"] = text.Trim();
             return response;
         }
     }
