@@ -1,7 +1,8 @@
 import processing.serial.*;
 import processing.net.*;
- 
-Client c;Serial ComPort;
+
+Client c;
+Serial ComPort;
 String input[];
 JSONObject json;
 String status;
@@ -26,20 +27,25 @@ void draw() {
         println("2:" + s_last + ".");
         ComPort.write(s_current);
         println(s_current);
+        //ComPort.clear();
       } else {
         println("skip");
+        
+        //if (ComPort.available() > 0) {
+          //statusRaw = ComPort.readStringUntil('\n');
+          //println("Sensor Status:" + statusRaw + ".");
+          //if (statusRaw.indexOf('1') > 0) {
+            //status = "Closed";
+          //} else {
+            //status = "Open";
+          //}
+          //println(status);
+          //c = new Client(this, "http://192.168.0.15:51112/api/GDO/SendDoorStatus/" + status, 80);
+          //c.write("GET / HTTP/1.0\r\n");
+          //c.write("\r\n");
+        //}
+        
       }
     }
-
-     statusRaw = ComPort.readString();
-     if (statusRaw == "1") {
-       status = "Closed";
-     } else {
-       status = "Open";
-     }
-     
-     c = new Client(this, "http://192.168.0.15:51112/api/GDO/SendDoorStatus/" + status, 80);
-     c.write("GET / HTTP/1.0\r\n");
-     c.write("\r\n");
   }
 }
